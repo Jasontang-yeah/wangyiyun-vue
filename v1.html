@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  vue.js的起步，都是要创建一个vue.js的实例，用于标识渲染的标签架构
+el: element 元素    你这个vue的实例的作用域
+<div id="app">
+    <!--
+    在vue.js里面，所有的值，都会用一种表达式来表示
+    -->
+    <h1>{{name}}</h1>
+    <!-- 表达式中，是可以运算的 -->
+    <h1>{{name.substr(2,4)}}</h1>
+    <h2>{{ num == 10 ? 1 : 2 }}</h2>
+
+
+    <p>--------------------------------</p>
+
+    <p v-text="name"></p>
+    <p>{{name}}</p>
+    {{msg}}
+    <div v-html="msg"></div>  <!-- 自动解析标签 -->
+<!--    <div v-show="flag">登录</div>-->
+        <!-- 条件判断 -->
+    <div v-if="flag">登录</div>
+    <div v-else>注册</div>
+
+    <div v-if="role===0">管理员</div>
+    <div v-else-if="role===1">用户</div>
+    <div v-else>游客</div>
+</div>
+
+<script src="../vue.js"></script>
+<script>
+    //创建vue实例
+    let app = new Vue({
+        el: '#app',
+        data: {
+            name:'hello world',
+            num: 10,
+            msg: '<h1>xxxx</h1>',
+            flag: false,
+            role: 1
+        }
+
+    });
+
+    let h1 = document.querySelector("#app h1").innerHTML;
+    console.log( h1 );
+</script>
+</body>
+</html>
